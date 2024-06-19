@@ -18,6 +18,6 @@ This Django project provides a comprehensive visualization of various sorting al
   - **Performance Comparison:** Displays the time taken by each sorting algorithm to sort the same array.
   - **Static Graph:** A graph comparing the performance of all sorting algorithms.
 
-![Home](images/homepage.png)
+![Home](Sorting-algorithm-visualization/images/homepage.jpg)
 
 Thank you for using the Sorting Algorithm Visualization project! We hope it helps you better understand sorting algorithms and their performance characteristics.
