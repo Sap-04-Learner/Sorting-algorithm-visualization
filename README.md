@@ -11,8 +11,11 @@ This Django project provides a comprehensive visualization of various sorting al
   - **Animated Video:** Visualization of the sorting process.
   - **Code Snippet:** Copyable code to implement the algorithm.
   - **Time Complexity Graph:** Graphical representation of the time complexity.
+
   
 - **Comparison Page:** A dedicated page for comparing sorting algorithms:
+
   - **Performance Comparison:** Displays the time taken by each sorting algorithm to sort the same array.
   - **Static Graph:** A graph comparing the performance of all sorting algorithms.
 
+Thank you for using the Sorting Algorithm Visualization project! We hope it helps you better understand sorting algorithms and their performance characteristics.
