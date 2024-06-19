@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Insertion Sort{% endblock title %}
+{% block insertion %}active{% endblock insertion %}
+
+{% block content %}
+<h1 class="head">Insertion Sort</h1>
+
+<p class="para">
+    Insertion sort builds the final sorted array gradually. Starting from the
+    second element, it compares and inserts each element into its correct
+    position within the sorted portion of the array. It repeats this process
+    until the entire array is sorted. Its time complexity is O(n<sup>2</sup>) in the
+    worst-case scenario.Insertion sort sequentially compares each element
+    with those before it, inserting it into its proper place in the sorted
+    portion of the array. It's efficient for small datasets but less so for
+    large ones. While its worst-case time complexity is O(n<sup>2</sup>), it's O(n)
+    when the array is nearly sorted. Insertion sort is an in-place algorithm,
+    meaning it doesn't require additional memory space for sorting.
+</p>
+
+<h3 class="sub-head">Characteristics of Insertion Sort Algortihm</h3>
+
+<ol class="para">
+    <li class="list">
+        <b>Simple Implementation:</b> Insertion sort is straightforward to
+        implement, making it easy to understand and code.
+    </li>
+    <li class="list">
+        <b>Efficiency for Small Datasets:</b> It performs well with small datasets
+        or nearly sorted lists due to its simple nature and low overhead.
+    </li>
+    <li class="list">
+        <b>In-Place Sorting:</b> It sorts the array in-place, meaning it doesn't
+        require additional memory beyond the original array.
+    </li>
+    <li class="list">
+        <b>Stable Sorting:</b> Insertion sort maintains the relative order of equal
+        elements, making it a stable sorting algorithm.
+    </li>
+    <li class="list">
+        <b>Quadratic Time Complexity:</b> In the worst-case scenario, insertion
+        sort has a time complexity of O(n<sup>2</sup>), making it inefficient for large
+        datasets.
+    </li>
+    <li class="list">
+        <b>Adaptive Nature:</b> It adapts well to partially sorted arrays, with a time
+        complexity of O(n) when the array is nearly sorted.
+    </li>
+</ol>
+
+<h3 class="sub-head">Animated Video Explaination and Code</h3>
+
+<div class="video">
+    <video width="720" controls>
+        <source src="{% static 'insertionanime.mp4' %}" type="video/mp4">
+    </video>
+</div>
+
+<p class="para">
+    Through this video, it becomes very clear how insertion sort works. It also tells the number of
+    comparisions and swapping done. Below is the code for insertion sort algorithm for sorting in python
+    language.
+</p>
+
+<div class="code">
+    <div class="copy">
+        <p>Copy Python Code</p>
+        <div class="copy-btn"><i class="fas fa-copy"></i></div>
+    </div>
+
+    <pre>
+        <code class="language-python">
+def insertion_sort(arr):
+    # Traverse through 1 to len(arr)
+    for i in range(1, len(arr)):
+        # Select the key to be compared
+        key = arr[i]
+                
+        # Move elements of arr[0..i-1], that are greater than key,
+        # to one position ahead of their current position
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+                
+            # Insert the key into the sorted sequence
+            arr[j + 1] = key
+        
+    # Example usage:
+    arr = [12, 11, 13, 5, 6]
+    print("Original array:", arr)
+    insertion_sort(arr)
+    print("Sorted array is:", arr)
+        </code>
+    </pre>
+</div>
+
+<div>
+    <h3 class="sub-head">Time Complexity Graph</h3>
+    <p class="para">
+        This chart illustrates the time complexity of the Insertion Sort 
+        algorithm across different scenarios (best case, average case, 
+        and worst case) as the input size increases.
+    </p>
+
+    <div class="graph">
+        <form class="btn" action="{% url "viewInsertion" %}" method="post">
+            {% csrf_token %}
+            <button id="startButton" type="submit" name="action" value="start">Start Plotting</button>
+        </form>
+
+        <div class="graph-axis para">
+            <p class="y-axis">Time (s)</p>
+        
+            <div class="chart">
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+        <p class="x-axis  para">Input Size (n)</p>
+    </div>
+
+</div>
+
+<h3 class="sub-head">Advantages of Insertion Sort</h3>
+
+<ol class="para">
+    <li class="list">
+        <b>Simple Implementation:</b> It's easy to understand and code, making it
+        suitable for educational purposes and simple sorting tasks.
+    </li>
+    <li class="list">
+        <b>Efficiency for Small Datasets:</b> It performs well with small datasets
+        or nearly sorted lists due to its low overhead and simple nature.
+    </li>
+    <li class="list">
+        <b>Adaptive Nature:</b> Insertion sort adapts well to partially sorted arrays,
+        with a time complexity of O(n) when the array is nearly sorted.
+    </li>
+    <li class="list">
+        <b>Stable Sorting:</b> It maintains the relative order of equal elements,
+        making it a stable sorting algorithm.
+    </li>
+</ol>
+
+<h3 class="sub-head">Disadvantages of Insertion Sort</h3>
+
+<ol class="para">
+    <li class="list">
+        <b>Quadratic Time Complexity: </b>In the worst-case scenario, insertion
+        sort has a time complexity of O(n<sup>2</sup>), making it inefficient for large
+        datasets. This makes it impractical for sorting very large arrays or lists.
+    </li>
+    <li class="list">
+        <b>Not Suitable for Large Datasets:</b> Due to its quadratic time
+        complexity, insertion sort becomes increasingly slow as the size of the
+        dataset grows, making it less practical for large-scale sorting tasks.
+    </li>
+    <li class="list">
+        <b>Lack of Efficiency for Random Data:</b> It doesn't perform well with
+        random or reverse-sorted data compared to other sorting algorithms
+        like quicksort or mergesort.
+    </li>
+    <li class="list">
+        <b>Inefficient for Complex Data Structures:</b> While insertion sort works
+        well for simple arrays or lists, it may not be suitable for sorting more
+        complex data structures such as trees or graphs.
+    </li>
+</ol>
+
+<h3 class="sub-head">Real Life Time Applications of Insertion Sort Algorithms</h3>
+
+<p class="para">
+    Insertion sort may not be the go-to choice for large-scale data sorting
+    due to its quadratic time complexity. However, it still finds practical
+    applications in various real-life scenarios, especially when dealing
+    with small datasets or situations where simplicity and adaptability are
+    more important than sorting speed. Here are some real-life
+    applications of insertion sort:
+</p>
+
+<ol class="para">
+    <li class="list">
+        <b>Small Databases: </b>Insertion sort is efficient for sorting small
+        databases or lists, making it suitable for tasks like sorting user records
+        in a small-scale application database.
+    </li>
+    <li class="list">
+        <b>Online Sorting:</b> In scenarios where data is continuously added and
+        sorted in real-time, such as maintaining a sorted list of high scores in
+        a video game, insertion sort can be a practical choice due to its
+        adaptive nature and low overhead.
+    </li>
+    <li class="list">
+        <b>Maintaining Sorted Data:</b> Insertion sort is useful for maintaining data
+        in a sorted order as new elements are added. For example,
+        maintaining a list of contacts in a mobile phone book or maintaining
+        an alphabetical list of items in a grocery store inventory.
+    </li>
+    <li class="list">
+        <b>Pre-Sorting for More Efficient Algorithms:</b> In some cases, insertion
+        sort can be used as a pre-sorting step before applying more efficient
+        sorting algorithms like quicksort or mergesort. This can be beneficial
+        when dealing with small subarrays or nearly sorted data.
+    </li>
+    <li class="list">
+        <b>Sorting Small Arrays in Embedded Systems:</b> In resourceconstrained
+        environments such as embedded systems or microcontrollers, where memory and processing power are limited,
+        insertion sort's simplicity and low overhead make it a practical choice
+        for sorting small arrays or lists.
+    </li>
+</ol>
+
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'script_3.js' %}"></script>
+{% endblock script %}

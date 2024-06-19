@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Selection Sort{% endblock title %}
+{% block selection %}active{% endblock selection %}
+
+{% block content %}
+<h1 class="head">Selection Sort</h1>
+
+<p class="para">
+    Selection sort is an effective and efficient sort algorithm based on comparison operations. It adds one element in
+    each iteration. You need to select the smallest element in the array and move it to the beginning of the array by
+    swapping with the front element. A sorting algorithm is an algorithm that puts elements of a list into an order. The
+    most frequently used orders are numerical order and lexicographical order, and either ascending or descending.
+    Selection Algorithm is an algorithm for finding the kth smallest (or largest) number in a list or an array. That
+    number is called the kth order statistic. Selection Sort has a time complexity of O(n<sup>2</sup>) in all cases
+    (best, average, worst). This makes the algorithm inefficient for large datasets as its performance deteriorates with
+    the increase in the size of the input.
+</p>
+
+<h3 class="sub-head">Characteristics of Selection Sort Algortihm</h3>
+
+<ol class="para">
+    <li class="list">
+        <b>Comparison-based sorting algorithm:</b> Selection Sort works by repeatedly finding the minimum element from
+        the unsorted portion of the array and moving it to the beginning. This process involves comparing elements to
+        determine the minimum.
+    </li>
+    <li class="list">
+        <b>In-place sorting:</b> Selection Sort operates directly on the input array without requiring additional space
+        for auxiliary data structures. It achieves sorting by swapping elements within the array.
+    </li>
+    <li class="list">
+        <b>Unstable sorting algorithm</b> Selection Sort does not guarantee the preservation of the relative order of
+        equal elements. When sorting duplicate elements, their original order might not be maintained in the sorted
+        array.
+    </li>
+    <li class="list">
+        <b>Best algorithm when swapping is a costly operation:</b> Since Selection Sort minimizes the number of swaps by
+        only performing them when necessary (once per pass), it becomes preferable over other algorithms when the cost
+        of swapping elements is high.
+    </li>
+</ol>
+
+<h3 class="sub-head">Animated Video Explaination and Code</h3>
+
+<div class="video">
+    <video width="720" controls>
+        <source src="{% static 'selectionanime.mp4' %}" type="video/mp4">
+    </video>
+</div>
+
+<p class="para">
+    Through this video, it becomes very clear how selection sort works. It also tells the number of
+    comparisions and swapping done. Below is the code for selection sort algorithm for sorting in python
+    language.
+</p>
+
+<div class="code">
+    <div class="copy">
+        <p>Copy Python Code</p>
+        <div class="copy-btn"><i class="fas fa-copy"></i></div>
+    </div>
+
+    <pre>
+        <code class="language-python">
+def selection_sort(arr):
+    n = len(arr)  # Length of the array
+    for i in range(n):
+        # Assume the current index is the index of the minimum element
+        min_idx = i
+        # Iterate through the unsorted portion of the array to 
+        # find the index of the minimum element
+        for j in range(i+1, n):
+            # If we find an element smaller than the current minimum, 
+            # update the minimum index
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        # Swap the minimum element with the element at the current position
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+        
+# Example usage:
+arr = [64, 25, 12, 22, 11]
+print("Original array:", arr)
+selection_sort(arr)
+print("Sorted array is:", arr)       
+        </code>
+    </pre>
+</div>
+
+<div>
+    <h3 class="sub-head">Time Complexity Graph</h3>
+    <p class="para">
+        This chart illustrates the time complexity of the Selection Sort 
+        algorithm across different scenarios (best case, average case, 
+        and worst case) as the input size increases.
+    </p>
+
+    <div class="graph">
+        <form class="btn" action="{% url "viewSelection" %}" method="post">
+            {% csrf_token %}
+            <button id="startButton" type="submit" name="action" value="start">Start Plotting</button>
+        </form>
+
+        <div class="graph-axis para">
+            <p class="y-axis">Time (s)</p>
+        
+            <div class="chart">
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+        <p class="x-axis  para">Input Size (n)</p>
+    </div>
+
+</div>
+
+<h3 class="sub-head">Advantages of Selection Sort</h3>
+
+<ol class="para">
+    <li class="list">
+        <b>Requires no additional storage space:</b> Selection Sort operates directly on the input array without
+        requiring additional memory allocation, making it memory-efficient.
+    </li>
+    <li class="list">
+        <b>Faster than any other sorting technique:</b> Selection Sort has a simple implementation and performs fewer
+        comparisons than some other algorithms, making it faster for small datasets or when the cost of comparisons
+        outweighs the cost of swaps.
+    </li>
+    <li class="list">
+        <b>Scalable:</b> While not as efficient as some other algorithms for large datasets, Selection Sort is still
+        scalable and can handle moderately sized datasets without significant performance degradation
+    </li>
+</ol>
+
+<h3 class="sub-head">Disadvantages of Selection Sort</h3>
+
+<ol class="para">
+    <li class="list">
+        <b>Not adaptive: </b>Selection Sort's performance remains the same regardless of the initial order of elements
+        in the array. It doesn't adjust its strategy based on the input.
+    </li>
+    <li class="list">
+        <b>Not stable in maintaining the order of equal elements:</b> Selection Sort may change the relative order of
+        equal elements during the sorting process, making it unsuitable for applications where maintaining the original
+        order of equal elements is necessary.
+    </li>
+    <li class="list">
+        <b>Inefficient for large datasets compared to other algorithms:</b> The time complexity of Selection Sort is
+        O(n<sup>2</sup>), which makes it inefficient for large datasets compared to more advanced sorting algorithms
+        like Quick Sort or Merge Sort.
+    </li>
+    <li class="list">
+        <b>Poor efficiency when dealing with a huge list of items:</b> Selection Sort's time complexity and performance
+        degrade significantly as the size of the dataset increases, making it impractical for sorting large lists
+        efficiently.
+    </li>
+</ol>
+
+<h3 class="sub-head">Real Life Time Applications of Selection Sort Algorithms</h3>
+
+<p class="para">
+    Selection Sort, despite its simplicity and O(n<sup>2</sup>) time complexity, finds its practical applications in
+    various real-life scenarios:
+</p>
+
+<p class="para">
+    Firstly, in educational settings, such as small classrooms, it efficiently sorts students' lists either by their
+    grades or names. This facilitates the process of identifying top performers or arranging students alphabetically.
+</p>
+
+<p class="para">
+    Secondly, in file management systems, Selection Sort can be utilized to organize files within directories based on
+    attributes like creation date or size. This aids in easier access to recently modified or larger files.
+</p>
+
+<p class="para">
+    Lastly, the algorithm is well-suited for sorting decks of cards, a task common in gaming or gambling scenarios.
+    Whether arranging cards in ascending or descending order, Selection Sort can quickly reorder the deck.
+</p>
+
+
+<p class="para">
+    In essence, Selection Sort's repetitive selection of the minimum element from the unsorted portion optimizes various
+    sorting tasks, despite its inefficiency for large datasets. Its straightforward implementation and suitability for
+    smaller tasks make it a viable option in many real-life scenarios.
+</p>
+
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'script_2.js' %}"></script>
+{% endblock script %}

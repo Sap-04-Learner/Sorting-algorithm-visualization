@@ -1,0 +1,198 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style_1.css' %}">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Chart.js annotation plugin -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
+    <title>AlgoVisual: {% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+
+    <div class="content">
+
+        <nav class="nav-bar">
+            <h2 class="logo"><a href="/">AlgoVisual</a></h2>
+            <div class="tabs">
+                <ul class="tab-b">
+                    <li class="t"><a href="{% url 'viewBubble' %}" class="{% block bubble %}{% endblock bubble %}">Bubble</a></li>
+                    <li class="t"><a href="{% url 'viewSelection' %}" class="{% block selection %}{% endblock selection %}">Selection</a></li>
+                    <li class="t"><a href="{% url 'viewInsertion' %}" class="{% block insertion %}{% endblock insertion %}">Insertion</a></li>
+                    <li class="t"><a href="{% url 'viewMerge' %}" class="{% block merge %}{% endblock merge %}">Merge</a></li>
+                    <li class="t"><a href="{% url 'viewQuick' %}" class="{% block quick %}{% endblock quick %}">Quick</a></li>
+                    <li class="t"><a href="{% url 'viewCompare' %}" class="{% block compare %}{% endblock compare %}">Compare</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        {% block content %}{% endblock content %}
+
+    </div>
+
+    <a href="#" class="top">Top</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll()</script>
+
+    <script>
+        // Function to copy the code
+        document.addEventListener("DOMContentLoaded", function () {
+            const copyBtn = document.querySelector(".copy-btn");
+            const code = document.querySelector("code");
+
+            if (!copyBtn || !code) {
+                console.error("Button or code element not found.");
+                return;
+            }
+
+            copyBtn.addEventListener("click", () => {
+                const codeContent = code.textContent;
+
+                const tempInput = document.createElement("textarea");
+                tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+                tempInput.value = codeContent;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+
+                copyBtn.innerHTML = "<i class='fas fa-check'></i>";
+            });
+        });
+
+        // Function to draw line graph
+        function drawLineGraph(data) {
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const labels = data.map(row => row[0]); // First column as labels
+            const datasets = [
+                {
+                    label: 'Best Case',
+                    data: data.map(row => row[1]),
+                    borderColor: 'blue',
+                    borderWidth: 2, // Increase line weight
+                    pointRadius: 2, // Remove dots
+                    fill: false
+                },
+                {
+                    label: 'Average Case',
+                    data: data.map(row => row[2]),
+                    borderColor: 'green',
+                    borderWidth: 2, // Increase line weight
+                    pointRadius: 2, // Remove dots
+                    fill: false
+                },
+                {
+                    label: 'Worst Case',
+                    data: data.map(row => row[3]),
+                    borderColor: 'red',
+                    borderWidth: 2, // Increase line weight
+                    pointRadius: 2, // Remove dots
+                    fill: false
+                }
+            ];
+
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: {
+                                display: true // Display x-axis grid
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Input Size (n)' // X-axis label
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: true // Display y-axis grid
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Time (s)' // Y-axis label
+                            }
+                        }
+                    },
+                    plugins: {
+                        annotation: {
+                            drawTime: 'afterDatasetsDraw',
+                            annotations: [{
+                                type: 'line',
+                                mode: 'vertical',
+                                scaleID: 'x',
+                                value: labels[0],
+                                borderColor: 'black',
+                                borderWidth: 1,
+                                label: {
+                                    content: labels[0],
+                                    enabled: true,
+                                    position: 'top'
+                                }
+                            }]
+                        }
+                    }
+                }
+            });
+
+            let animationInterval;
+
+            // Function to start animation
+            function startAnimation() {
+                let index = 0;
+                animationInterval = setInterval(() => {
+                    if (index < labels.length) {
+                        chart.data.labels.push(labels[index]);
+                        datasets.forEach(dataset => {
+                            dataset.data.push(data[index][datasets.indexOf(dataset) + 1]);
+                        });
+                        chart.update();
+                        index++;
+                    } else {
+                        clearInterval(animationInterval);
+                    }
+                }, 200); // Interval time in milliseconds (0.5 sec)
+            }
+
+            // Event listener for start button
+            document.getElementById('startButton').addEventListener('click', () => {
+                // Clear previous data
+                chart.data.labels = [];
+                datasets.forEach(dataset => {
+                    dataset.data = [];
+                });
+                chart.update();
+                // Start animation
+                startAnimation();
+            });
+        }
+
+        // Directly embed data and draw graph
+        const embeddedData = {{data|safe}} ;
+
+        drawLineGraph(embeddedData);
+    </script>
+
+</body>
+    
+</html>

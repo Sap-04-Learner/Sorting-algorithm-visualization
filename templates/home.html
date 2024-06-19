@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style_2.css' %}">
+    <title>AlgoVisual: Home</title>
+</head>
+
+<body>
+
+    <div class="content">
+        <h1 class="head">AlgoVisual</h1>
+
+        <p class="intro">Discover the essence of algorithms and their efficiency on our platform. Unravel the secrets
+            behind their performance variations.</p>
+
+        <ul class="container">
+            <li class="section"><a href="{% url 'viewBubble' %}">Bubble Sort</a></li>
+            <li class="section"><a href="{% url 'viewSelection' %}">Selection Sort</a></li>
+            <li class="section"><a href="{% url 'viewInsertion' %}">Insertion Sort</a></li>
+            <li class="section"><a href="{% url 'viewMerge' %}">Merge Sort</a></li>
+            <li class="section"><a href="{% url 'viewQuick' %}">Quick Sort</a></li>
+            <li class="section"><a href="{% url 'viewCompare' %}">Algorithm Comparisons</a></li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const text = document.querySelector('.head').textContent;
+          let newText = '';
+          for (let i = 0; i < text.length; i++) {
+            newText += `<span style="animation: appearAnimation 2s infinite ${i * 0.1}s">${text.charAt(i)}</span>`;
+          }
+          document.querySelector('.head').innerHTML = newText;
+          document.querySelector('.head').style.visibility = 'visible'; // Make the text visible after animation
+        });
+      </script>
+      
+      <style>
+        @keyframes appearAnimation {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      </style>
+
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block title %}Quick Sort{% endblock title %} 
+{% block quick %}active{% endblock quick %} 
+
+{% block content %}
+
+<h1 class="head">Quick Sort</h1>
+
+<p class="para">
+  Quick Sort is useful for sorting arrays. Quicksort is a divide-and-conquer
+  algorithm. The primary idea behind Merge Sort is to break down a large list
+  into smaller, more manageable lists, sort them individually, and then merge
+  these sorted lists to create a final sorted list. It works by selecting a
+  'pivot' element from the array and partitioning the other elements into two
+  sub-arrays, according to whether they are less than or greater than the pivot.
+  For this reason, it is sometimes called partition-exchange sort. In efficient
+  implementations Quick Sort is not a stable sort, meaning that the relative
+  order of equal sort items is not preserved. Overall time complexity of Quick
+  Sort is O(nLogn).
+</p>
+
+<h3 class="sub-head">Characteristics of Quick Sort Algortihm</h3>
+
+<ol class="para">
+  <li class="list">
+    <b>Efficiency:</b> Quick sort has an average-case time complexity of O(n log
+    n), making it one of the fastest sorting algorithms for large datasets.
+  </li>
+  <li class="list">
+    <b>Divide and Conquer:</b> Quick sort divides the array into smaller
+    sub-arrays based on a pivot element, then recursively sorts the sub-arrays.
+  </li>
+  <li class="list">
+    <b>Recursion:</b> After partitioning, the algorithm recursively sorts the
+    sub-arrays on the left and right of the pivot until the entire array is
+    sorted.
+  </li>
+  <li class="list">
+    <b>In-place Sorting:</b> Quick sort can be implemented to sort the array
+    in-place, without requiring additional memory for auxiliary arrays.
+  </li>
+  <li class="list">
+    <b>Unstable:</b> Quick sort is an unstable sorting algorithm, meaning it
+    does not necessarily preserve the relative order of equal elements.
+  </li>
+</ol>
+
+<h3 class="sub-head">Animated Video Explaination and Code</h3>
+
+<div class="video">
+  <iframe width="720" height="400" src="https://www.youtube-nocookie.com/embed/KCzdh-OGXRA?si=Sp30wEb47ffYMXdj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<p class="para">
+  Through this video, it becomes very clear how quick sort works. Below is the
+  code for quick sort algorithm for sorting in python language.
+</p>
+
+<div class="code">
+  <div class="copy">
+    <p>Copy Python Code</p>
+    <div class="copy-btn"><i class="fas fa-copy"></i></div>
+  </div>
+
+  <pre>
+        <code class="language-python">
+def partition(arr, low, high):
+    # Function to partition the array and return the index of the pivot element.
+    pivot = arr[high]  # Choose pivot as last element
+    i = low - 1  # Initialize index of smaller element
+            
+    # Iterate through the array
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]  # Swap
+                    
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]  # Swap
+    return i + 1
+      
+def quick_sort_helper(arr, low, high):
+    # Recursive helper function to perform Quicksort on the array.
+    if low < high:
+        # Partition the array and get the pivot index
+        pi = partition(arr, low, high)
+              
+        # Recursively sort elements before and after the pivot
+        quick_sort_helper(arr, low, pi - 1)
+        quick_sort_helper(arr, pi + 1, high)
+      
+def quick_sort(arr):
+    # Main function to perform Quicksort on the given array.
+    quick_sort_helper(arr, 0, len(arr) - 1)
+    return arr
+      
+# Example usage
+arr = [3, 6, 8, 10, 1, 2, 1]
+print("Original array:", arr)
+sorted_arr = quick_sort(arr)
+print("Sorted array:", sorted_arr)
+        </code>
+    </pre>
+</div>
+
+<div>
+  <h3 class="sub-head">Time Complexity Graph</h3>
+  <p class="para">
+    This chart illustrates the time complexity of the Quick Sort 
+    algorithm across different scenarios (best case, average case, 
+    and worst case) as the input size increases.
+  </p>
+
+  <div class="graph">
+      <form class="btn" action="{% url "viewQuick" %}" method="post">
+          {% csrf_token %}
+          <button id="startButton" type="submit" name="action" value="start">Start Plotting</button>
+      </form>
+
+      <div class="graph-axis para">
+          <p class="y-axis">Time (s)</p>
+      
+          <div class="chart">
+              <canvas id="myChart" width="400" height="400"></canvas>
+          </div>
+      </div>
+      <p class="x-axis  para">Input Size (n)</p>
+  </div>
+
+</div>
+
+<h3 class="sub-head">Advantages of Quick Sort</h3>
+
+<ol class="para">
+  <li class="list">
+    <b>Efficiency:</b> It's one of the fastest sorting algorithms, especially
+    for large datasets, with an average-case time complexity of O(n log n).
+  </li>
+  <li class="list">
+    <b>Adaptive:</b> Quick sort's performance adapts to the data being sorted.
+    It performs well even on partially sorted arrays.
+  </li>
+  <li class="list">
+    <b>Average-case Behavior:</b> While quick sort has a worst-case time
+    complexity of O(n<sup>2</sup>), its average-case behavior is O(n log n),
+    making it suitable for a wide range of applications
+  </li>
+</ol>
+
+<h3 class="sub-head">Disadvantages of Quick Sort</h3>
+
+<ol class="para">
+  <li class="list">
+    <b>Not Stable: </b>Unlike some other sorting algorithms like merge sort,
+    quick sort is not stable, meaning it may change the relative order of equal
+    elements in the input array.
+  </li>
+  <li class="list">
+    <b>Not Suitable for Linked Lists:</b> Quick sort's recursive nature and
+    reliance on random access make it less suitable for sorting linked lists
+    compared to other algorithms like merge sort.
+  </li>
+  <li class="list">
+    <b>Not Adaptive to Small Inputs:</b> Quick sort may not perform well on
+    small input sizes or when the dataset is already sorted, as the overhead of
+    partitioning and recursion can outweigh the benefits of its efficient
+    average-case behavior.
+  </li>
+</ol>
+
+<h3 class="sub-head">Real Life Time Applications of Quick Sort Algorithms</h3>
+
+<p class="para">
+  Quick sort is used in various real-life applications where efficient sorting
+  of large datasets is required.
+</p>
+
+<ol class="para">
+  <li class="list">
+    Arranging a dataset of student records in a school database based on their
+    names, roll numbers, or grades.
+  </li>
+  <li class="list">
+    Sorting a list of scientific research papers based on their publication date
+    or citation count.
+  </li>
+  <li class="list">
+    Sorting a large dataset of user information in a social media platform.
+  </li>
+  <li class="list">
+    Organizing a huge library of books based on their titles or author names.
+  </li>
+  <li class="list">
+    Sorting a list of products in an e-commerce platform based on their prices
+    or ratings.
+  </li>
+</ol>
+
+<p class="para">
+  Overall, quick sort's efficiency and adaptability make it suitable for a wide
+  range of real-life applications where fast and scalable sorting algorithms are
+  required to handle large datasets effectively.
+</p>
+
+{% endblock content %}

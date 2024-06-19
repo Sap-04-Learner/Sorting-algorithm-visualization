@@ -1,0 +1,391 @@
+body{
+    background-color: rgb(43, 42, 42);
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.content{
+    background: rgba(255, 255, 255, 0.878);
+    margin: 40px 70px;
+    padding: 10px 30px 30px 30px;
+    border-radius: 40px;
+}
+
+.nav-bar {
+    display: flex;
+    text-align: center;
+    padding: 0 20px ;
+    border-bottom: #2f2e2e solid 2px;
+}
+
+.logo {
+    text-align: left;
+    width: 400px;
+    font-family: "Audiowide", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 30px;
+}
+
+.logo a{
+    text-decoration: none;
+    color: #2f2e2e;
+}
+
+.tab-b {
+    list-style-type: none;
+    margin-top: 20px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.t {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.t a {
+    display: block;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    border-radius: 40px;
+    color: #2f2e2e;
+}
+
+.t a:hover:not(.active) {
+    background-color: #2f2e2ec2;
+    color: whitesmoke;
+}
+
+.t .active {
+    background-color: #2f2e2e;
+    color: whitesmoke;
+}
+
+.head {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 60px;
+    padding: 10px 0 0 60px;
+    margin: 40px 0;
+}
+
+.para {
+    padding: 0 70px;
+    font-size: 20px;
+    text-align: justify;
+    line-height: 28px;
+}
+
+.sub-head {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 30px;
+    margin-left: 30px;
+    padding: 20px 0 0 20px;
+    border-left: #2f2e2e solid 4px;
+}
+
+.list {
+    margin: 0 0 10px 10px;
+}
+
+.code {
+    width: min-content;
+    margin: 40px auto;
+    padding: 0 10px;
+    font-size: 16px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(28, 28, 28, 0.46);
+    background-color: #777676;
+}
+
+pre {
+    margin: 0;
+    padding: 0;
+}
+
+code {
+    border-radius: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.copy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    margin: 0;
+    padding: 8px 12px 0 12px;
+}
+
+.copy p {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    color: whitesmoke
+}
+
+.copy .copy-btn {
+    background: rgb(212, 212, 212);
+    color: #777676;
+    font-size: 1.5em;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.copy .copy-btn:hover {
+    color: #2e2e2e
+}
+
+video {
+    border-radius: 20px;
+    margin: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+iframe {
+    border-radius: 20px;
+    margin: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.video {
+    box-shadow: 0 5px 20px rgba(28, 28, 28, 0.46);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px auto 40px auto;
+    width: 740px;
+    height: 422px;
+    background-color: #777676;
+}
+
+.graph {
+    background-color: #777676; 
+    padding-top: 10px; 
+    padding-bottom: 10px;
+    border-radius: 24px;
+    margin-right: 70px;
+    margin-left: 70px;
+    box-shadow: 0 5px 20px rgba(28, 28, 28, 0.46);
+}
+
+.graph-axis {
+    display: flex; 
+    margin: auto; 
+    width: 820px; 
+    justify-content: space-around;
+}
+
+.y-axis {
+    writing-mode: vertical-rl; 
+    transform: rotate(180deg); 
+    margin: auto 0 auto 0;
+    color: whitesmoke;
+    line-height: 0;
+}
+
+.chart {
+    width: 700px;
+    height: 460px;
+    margin: auto auto;
+}
+
+#myChart {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#sortingChart {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.x-axis {
+    margin: auto;
+    text-align: center;
+    color: whitesmoke;
+    line-height: 46px;
+}
+
+.btn {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#startButton {
+    background: rgb(212, 212, 212);
+    font-size: 20px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 50px;
+}
+
+#startButton:hover {
+    background: #4c4b4b;
+    color: whitesmoke;
+    border: solid 2px whitesmoke;
+}
+
+#plotButton {
+    background: rgb(212, 212, 212);
+    font-size: 20px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 50px;
+}
+
+#plotButton:hover {
+    background: #4c4b4b;
+    color: whitesmoke;
+    border: solid 2px whitesmoke;
+}
+
+.top {
+    --offset: 50px; 
+  
+    position: sticky;
+    bottom: 20px;      
+    margin-left: 1150px;
+    place-self: end;
+    margin-top: calc(100vh + var(--offset));
+  
+    /* visual styling */
+    text-decoration: none;
+    padding: 20px 10px;
+    font-family: "Audiowide", sans-serif;
+    color: #2e2d2d;
+    font-weight: bold;
+    background: rgb(212, 212, 212);
+    border-radius: 40px;
+    white-space: nowrap;
+    font-size: 24px;
+    text-align: center;
+    border: solid 2px #2e2d2d;
+    box-shadow: 0 5px 20px rgba(25, 25, 25, 0.859);
+}
+
+.top:hover {
+    color: whitesmoke;
+    background: #777676;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+.form {
+    max-width: 800px;
+    margin: 26px auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #cbcbcb;
+    box-shadow: 0 5px 20px rgba(25, 25, 25, 0.859);
+}
+
+label {
+    display: block;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: calc(100% - 10px);
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    height: 40px;
+    font-size: 20px;
+}
+
+input[type="text"]::placeholder {
+    color: #c5c4c4; /* Placeholder text color */
+    font-style: italic; /* Italicize the placeholder text */
+}
+
+
+.but {
+    text-align: center; /* Center the button */
+}
+
+.but button {
+    margin-top: 30px;
+    background: #787878;
+    font-size: 20px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 50px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.but button:hover {
+    background: #4c4b4b;
+}
+
+#sorting_times {
+    margin: 30px auto 10px auto; /* Add some spacing from the button */
+    padding: 20px;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    width: 500px;
+}
+
+#sorting_times ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+#sorting_times li {
+    margin-bottom: 10px;
+}
+
+.table {
+    margin: auto;
+    border-collapse: collapse;
+    width: 80%; /* Adjust the width as necessary */
+    border: 4px solid #2f2f2f; /* Add border to the table */
+    border-radius: 10px; /* Make the border curvy */
+    overflow: hidden; /* Ensure borders are contained */
+    box-shadow: 0 5px 20px rgba(25, 25, 25, 0.859);
+}
+
+.table.para th,
+.table.para td {
+    text-align: center;
+    padding: 10px; /* Adjust padding as necessary */
+    border: 2px solid #000; /* Add border to table cells */
+}
+
+.table.para th {
+    background-color: #c3c3c3;
+    font-weight: bold;
+}
+
+.table.para tr:nth-child(even) {
+    background-color: #d3d1d1;
+}
+
+/* Remove text decoration from anchor tags */
+.table.para a {
+    text-decoration: none;
+    color: inherit; /* Maintain the text color */
+}

@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Bubble Sort{% endblock title %}
+{% block bubble %}active{% endblock bubble %}
+
+{% block content %}
+    <h1 class="head">Bubble Sort</h1>
+
+    <p class="para">
+        Bubble sort is a basic sorting algorithm. It compares adjacent elements and swaps them if they're in the
+        wrong order. This process is repeated until the list is sorted. It's simple but not very efficient for
+        large lists. Bubble sort works by repeatedly comparing adjacent elements in a list and swapping them if
+        they are in the wrong order. This process continues until the entire list is sorted. Bubble sort has a
+        time complexity of O(n<sup>2</sup>), which means it can be slow for large lists. However, it is easy to understand
+        and implement, making it a good choice for small or nearly sorted lists.
+    </p>
+
+    <h3 class="sub-head">Characteristics of Bubble Sort Algortihm</h3>
+
+    <ol class="para">
+        <li class="list">
+            <b>Comparison-based sorting algorithm:</b> Bubble sort compares adjacent elements in the list and swaps them if they are
+            in the wrong order. This process is repeated until the entire list is sorted.
+        </li>
+        <li class="list">
+            <b>In-place sorting:</b> Bubble sort operates directly on the input list without requiring additional
+            memory space. It rearranges the elements within the original list.
+        </li>
+        <li class="list">
+            <b>Stable sorting:</b> Bubble sort maintains the relative order of elements with equal values. If two
+            elements have the same value, their order will remain the same after sorting.
+        </li>
+        <li class="list">
+            <b>Quadratic time complexity:</b> Bubble sort has an average and worst-case time complexity of O(n<sup>2</sup>),
+            where n is the number of elements in the list. This means that the time it takes to sort the list grows
+            exponentially as the size of the list increases.
+        </li>
+        <li class="list">
+            <b>Adaptive:</b> Bubble sort can be adaptive, meaning it can take advantage of partially sorted lists.
+            If the list is already partially sorted,bubble sort can detect it and terminate early, resulting in
+            improved performance.
+        </li>
+        <li class="list">
+            <b>Simple implementation:</b> Bubble sort is relatively easy to understand and implement. It involves
+            a basic swapping mechanism and a loop that iterates through the list multiple times.
+        </li>
+    </ol>
+
+    <p class="para">
+        While bubble sort may not be the most efficient sorting algorithm for large datasets, it can still be useful
+        for small lists or as a teaching tool to understand the concept of sorting.
+    </p>
+
+    <h3 class="sub-head">Animated Video Explaination and Code</h3>
+
+    <div class="video">
+        <video width="720" controls>
+            <source src="{% static 'bubbleanime.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+
+    <p class="para">
+        Through this video, it becomes very clear how bubble sort works. It also tells the number of
+        comparisions and swapping done. Below is the code for bubble sort algorithm for sorting in python
+        language.
+    </p>
+
+    <div class="code">
+        <div class="copy">
+            <p>Copy Python Code</p>
+            <div class="copy-btn"><i class="fas fa-copy"></i></div>
+        </div>
+
+        <pre>
+            <code class="language-python">
+def bubble_sort(arr):
+    n = len(arr)
+    # Traverse through all elements in the list
+    for i in range(n):
+        swapped = False
+        # Last i elements are already in place, so we don't need to check them
+        for j in range(0, n-i-1):
+            # Traverse the list from 0 to n-i-1
+            # Swap if the element found is greater than the next element
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                swapped = True
+        # If no two elements were swapped in the inner loop, the list is sorted
+        if not swapped:
+            break
+
+# Example usage:
+arr = [64, 34, 25, 12, 22, 11, 90]
+print("Original array:", arr)
+bubble_sort(arr)
+print("Sorted array:", arr)
+            </code>
+        </pre>
+    </div>
+
+    <div>
+        <h3 class="sub-head">Time Complexity Graph</h3>
+        <p class="para">
+            This chart illustrates the time complexity of the Bubble Sort 
+            algorithm across different scenarios (best case, average case, 
+            and worst case) as the input size increases.
+        </p>
+
+        <div class="graph">
+            <form class="btn" action="{% url "viewBubble" %}" method="post">
+                {% csrf_token %}
+                <button id="startButton" type="submit" name="action" value="start">Start Plotting</button>
+            </form>
+
+            <div class="graph-axis para">
+                <p class="y-axis">Time (s)</p>
+            
+                <div class="chart">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+            <p class="x-axis  para">Input Size (n)</p>
+        </div>
+
+    </div>
+
+    <h3 class="sub-head">Advantages of Bubble Sort</h3>
+
+    <ol class="para">
+        <li class="list">
+            <b>Simplicity:</b> Bubble sort is easy to understand and implement since it involves comparing adjacent
+            elements and swapping them if they're in the wrong order.
+        </li>
+        <li class="list">
+            <b>Space Efficiency:</b> Bubble sort operates on the original array itself, without requiring additional
+            memory space.
+        </li>
+        <li class="list">
+            <b>Adaptive:</b> Bubble sort can be adaptive, meaning that it performs well when the input array is
+            already partially sorted or nearly sorted.
+        </li>
+    </ol>
+
+    <h3 class="sub-head">Disadvantages of Bubble Sort</h3>
+
+    <ol class="para">
+        <li class="list">
+            <b>Inefficiency: </b>Bubble sort has a time complexity of O(n<sup>2</sup>), making it inefficient for large
+            arrays. It requires multiple passes through the array, even if it's already sorted.
+        </li>
+        <li class="list">
+            <b>Lack of Efficiency with Reversed Order:</b> Bubble sort performs poorly when the array is in reverse
+            order, as it requires many swaps to move larger elements to their correct positions.
+        </li>
+        <li class="list">
+            <b>Lack of Practicality:</b> Due to its inefficiency, bubble sort is rarely used in practice for sorting
+            large datasets. Other sorting algorithms like quicksort or mergesort are more commonly employed.
+        </li>
+    </ol>
+
+    <h3 class="sub-head">Real Life Time Applications of Bubble Sort Algorithms</h3>
+
+    <p class="para">
+        Bubble sort Is a simple sorting algorithm that's not as commonly used in practical applications due to its
+        inefficiency for large datasets. However, it can still be useful in certain scenarios where the dataset is
+        small or nearly sorted.
+    </p>
+
+    <p class="para">
+        One real-life application where bubble sort might be used is in educational settings to teach the concept of
+        sorting algorithms. It helps students understand the basic principles of sorting and how different
+        algorithms work.
+    </p>
+
+    <p class="para">
+        Additionally, bubble sort can be used in situations where the dataset is small and efficiency is not a top
+        priority. For example, if you have a small list of names or numbers that need to be sorted, bubble sort can
+        be a straightforward and easy-to-implement solution.
+    </p>
+
+    <p class="para">
+        But generally, for larger datasets or time-critical applications, more efficient sorting algorithms like
+        quicksort or mergesort are preferred.
+    </p>
+    
+{% endblock content %}
+
