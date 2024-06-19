@@ -18,6 +18,18 @@ This Django project provides a comprehensive visualization of various sorting al
   - **Performance Comparison:** Displays the time taken by each sorting algorithm to sort the same array.
   - **Static Graph:** A graph comparing the performance of all sorting algorithms.
 
-![Home](Sorting-algorithm-visualization/images/homepage.jpg)
+![Home]([Sorting-algorithm-visualization/images/homepage.jpg](https://github.com/Sap-04-Learner/Sorting-algorithm-visualization/blob/main/images/homepage.jpg))
+
+![InsertionPage]([Sorting-algorithm-visualization/images/homepage.jpg](https://github.com/Sap-04-Learner/Sorting-algorithm-visualization/blob/main/images/homepage.jpg))
+
+![Home]([Sorting-algorithm-visualization/images/homepage.jpg](https://github.com/Sap-04-Learner/Sorting-algorithm-visualization/blob/main/images/homepage.jpg))
+
+![Home]([Sorting-algorithm-visualization/images/homepage.jpg](https://github.com/Sap-04-Learner/Sorting-algorithm-visualization/blob/main/images/homepage.jpg))
+
+![Home]([Sorting-algorithm-visualization/images/homepage.jpg](https://github.com/Sap-04-Learner/Sorting-algorithm-visualization/blob/main/images/homepage.jpg))
+
+![Home]([Sorting-algorithm-visualization/images/homepage.jpg](https://github.com/Sap-04-Learner/Sorting-algorithm-visualization/blob/main/images/homepage.jpg))
+
+![Home]([Sorting-algorithm-visualization/images/homepage.jpg](https://github.com/Sap-04-Learner/Sorting-algorithm-visualization/blob/main/images/homepage.jpg))
 
 Thank you for using the Sorting Algorithm Visualization project! We hope it helps you better understand sorting algorithms and their performance characteristics.
